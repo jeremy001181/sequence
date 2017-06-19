@@ -17,7 +17,8 @@
         {
             var firstStep = _stepReader.GetFirstStep();
 
-            if(firstStep != null)await firstStep.RunAsync(_context);
+            if(firstStep != null)
+                await firstStep.RunAsync(_context);
         }
     }
 }

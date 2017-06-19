@@ -47,6 +47,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="IWorkflowContext.cs" />
     <Compile Include="IWorkflowFactory.cs" />
+    <Compile Include="WorkflowContext.cs" />
     <Compile Include="WorkflowStepManager.cs" />
     <Compile Include="IWorkflow.cs" />
     <Compile Include="IWorkflowStepCollectionBuilder.cs" />

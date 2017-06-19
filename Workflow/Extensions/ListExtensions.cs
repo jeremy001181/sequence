@@ -5,7 +5,7 @@ namespace Workflow.Extensions
 {
     internal static class ListExtensions
     {
-        internal static void Append(this IList<WorkflowStep> workflowStepList, WorkflowStep newStep)
+        internal static void AppendWorkflowStep(this IList<WorkflowStep> workflowStepList, WorkflowStep newStep)
         {
             var lastStep = workflowStepList.LastOrDefault();
 

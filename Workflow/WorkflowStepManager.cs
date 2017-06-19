@@ -16,11 +16,13 @@ namespace Workflow
             _workflowSteps = new List<WorkflowStep>();
         }
 
-        public IWorkflowStepCollectionBuilder AddStep<T>(params object[] args) where T : WorkflowStep
+        public IWorkflowStepCollectionBuilder AddStep<T>(params object[] args) where T : WorkflowStep, new()
         {
-            var newStep = Activator.CreateInstance(typeof(T), BindingFlags.CreateInstance, args) as WorkflowStep;
-
-            _workflowSteps.Append(newStep);
+            var newStep = args == null || args.Length == 0
+                ? Activator.CreateInstance<T>() 
+                : Activator.CreateInstance(typeof(T), BindingFlags.CreateInstance, args);
+            
+            _workflowSteps.AppendWorkflowStep(newStep as WorkflowStep);
 
             return this;
         }
@@ -29,7 +31,7 @@ namespace Workflow
         {
             var newStep = new ActionWorkflowStep(action);
             
-            _workflowSteps.Append(newStep);
+            _workflowSteps.AppendWorkflowStep(newStep);
 
             return this;
         }

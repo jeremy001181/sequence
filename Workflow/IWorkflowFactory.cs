@@ -4,6 +4,6 @@ namespace Workflow
 {
     public interface IWorkflowFactory
     {
-        IWorkflow CreateWorkflowAsync(Action<IWorkflowStepCollectionBuilder> action);
+        IWorkflow CreateWorkflow(Action<IWorkflowStepCollectionBuilder> action);
     }
 }
