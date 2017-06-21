@@ -51,6 +51,7 @@
     <Compile Include="StepsExecutionOrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ContextAccessbilityTests.cs" />
+    <Compile Include="TestSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sequence\Sequence.csproj">

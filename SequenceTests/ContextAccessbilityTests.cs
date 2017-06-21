@@ -13,14 +13,14 @@ namespace Sequence.AcceptanceTests
         {
             var sequence = _factory.CreateSequence(builder =>
             {
-                builder.AddStep<AddArgumentsToContextStep>("1", "step 1")
+                builder.AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1")
                     .AddStep(async (context, next) =>
                     {
                         Assert.AreEqual(context.Data["1"], "step 1");
                         await next(context);
                     });
                 var obj = new object();
-                builder.AddStep<AddArgumentsToContextStep>("2", obj);
+                builder.AddStep<TestSteps.AddArgumentsToContextStep>("2", obj);
                 builder.AddStep(async (context, next) =>
                 {
                     Assert.AreEqual(context.Data["1"], "step 1");
@@ -34,21 +34,4 @@ namespace Sequence.AcceptanceTests
         }
     }
 
-    public class AddArgumentsToContextStep : Step
-    {
-        private readonly string _key;
-        private readonly object _value;
-
-        public AddArgumentsToContextStep(string key, object value)
-        {
-            _key = key;
-            _value = value;
-        }
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            context.Data.Add(_key, _value);
-
-            await Next(context);
-        }
-    }
 }

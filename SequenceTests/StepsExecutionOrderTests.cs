@@ -57,35 +57,4 @@ namespace Sequence.AcceptanceTests
             Assert.Throws<ArgumentNullException>(() => _factory.CreateSequence(null));
         }
     }
-
-    public class SimpleStepNotRun : Step
-    {
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            await Next(context);
-        }
-    }
-
-    public class SimpleStepNoParameters : Step
-    {
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            await Next(context);
-        }
-    }
-
-    public class SimpleStepWithParameters : Step
-    {
-        private readonly string _something;
-
-        public SimpleStepWithParameters(string something)
-        {
-            _something = something;
-        }
-
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            await Next(context);
-        }
-    }
 }

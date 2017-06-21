@@ -30,20 +30,10 @@ namespace Sequence.AcceptanceTests
         {
             var sequence = _factory.CreateSequence(builder =>
             {
-                builder.AddStep<ThrowUnhandleExceptionStep>();
+                builder.AddStep<TestSteps.ThrowUnhandleExceptionStep>();
             });
 
             Assert.ThrowsAsync<InvalidOperationException>(async () => await sequence.ExecuteAsync());
-        }
-    }
-
-    internal class ThrowUnhandleExceptionStep : Step
-    {
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            await Task.FromResult(0);
-
-            throw new InvalidOperationException();
         }
     }
 }
