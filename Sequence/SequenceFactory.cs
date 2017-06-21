@@ -8,7 +8,7 @@ namespace Sequence
         {
             if (action == null)
             {
-                throw new ArgumentNullException(nameof(action));
+                throw new ArgumentNullException("action");
             }
 
             var stepCollection = new StepManager();

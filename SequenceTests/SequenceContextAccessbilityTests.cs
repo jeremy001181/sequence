@@ -13,7 +13,7 @@ namespace SequenceTests
         [Test]
         public async Task Should_be_able_to_read_object_that_set_in_previous_step_from_context()
         {
-            var workflow = _factory.CreateSequence(builder =>
+            var sequence = _factory.CreateSequence(builder =>
             {
                 builder.AddStep<TestStepToAddObject>();
                 builder.AddStep<TestStepB>();
@@ -26,7 +26,7 @@ namespace SequenceTests
                 });
             });
 
-            await workflow.ExecuteAsync();
+            await sequence.ExecuteAsync();
         }
     }
 

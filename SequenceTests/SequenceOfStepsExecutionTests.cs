@@ -14,7 +14,7 @@ namespace SequenceTests
         public async Task Should_execute_steps_in_the_same_order_as_they_were_added()
         {
             var count = 1;
-            var workflow = _factory.CreateSequence(builder =>
+            var sequence = _factory.CreateSequence(builder =>
             {
                 builder
                     .AddStep(async (context, next) =>
@@ -37,7 +37,7 @@ namespace SequenceTests
                     });
             });
 
-            await workflow.ExecuteAsync();
+            await sequence.ExecuteAsync();
         }
 
         [Test]
