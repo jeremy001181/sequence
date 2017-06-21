@@ -16,13 +16,9 @@ namespace Sequence
             _steps = new List<Step>();
         }
 
-        public IStepCollectionBuilder AddStep<T>(params object[] args) where T : Step, new()
+        public IStepCollectionBuilder AddStep<T>(params object[] args) where T : Step
         {
-            var newStep = args == null || args.Length == 0
-                ? new T()
-                : Activator.CreateInstance(typeof(T), BindingFlags.CreateInstance, args);
-            
-            _steps.AppendStep(newStep as Step);
+            _steps.AppendStep((T) Activator.CreateInstance(typeof(T), args));
 
             return this;
         }

@@ -13,12 +13,18 @@ namespace Sequence.AcceptanceTests
         {
             var sequence = _factory.CreateSequence(builder =>
             {
-                builder.AddStep<TestStepToAddObject>();
-                builder.AddStep<TestStepB>();
+                builder.AddStep<AddArgumentsToContextStep>("1", "step 1")
+                    .AddStep(async (context, next) =>
+                    {
+                        Assert.AreEqual(context.Data["1"], "step 1");
+                        await next(context);
+                    });
+                var obj = new object();
+                builder.AddStep<AddArgumentsToContextStep>("2", obj);
                 builder.AddStep(async (context, next) =>
                 {
-                    Assert.AreEqual(context.Data["testdata1"], "testdata1");
-                    Assert.AreEqual(context.Data["testdata2"], "testdata2");
+                    Assert.AreEqual(context.Data["1"], "step 1");
+                    Assert.AreSame(context.Data["2"], obj);
 
                     await next(context);
                 });
@@ -28,23 +34,19 @@ namespace Sequence.AcceptanceTests
         }
     }
 
-    public class TestStepToAddObject : Step
+    public class AddArgumentsToContextStep : Step
     {
-        public override async Task RunAsync(ISequenceContext context)
-        {
-            context.Data.Add("testdata1", "testdata1");
+        private readonly string _key;
+        private readonly object _value;
 
-            await Next(context);
+        public AddArgumentsToContextStep(string key, object value)
+        {
+            _key = key;
+            _value = value;
         }
-    }
-
-    internal class TestStepB : Step
-    {
         public override async Task RunAsync(ISequenceContext context)
         {
-            Assert.AreEqual(context.Data["testdata1"], "testdata1");
-
-            context.Data.Add("testdata2", "testdata2");
+            context.Data.Add(_key, _value);
 
             await Next(context);
         }
