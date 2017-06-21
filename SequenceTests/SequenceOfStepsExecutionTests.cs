@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Workflow;
+using Sequence;
 
-namespace WorkflowTests
+namespace SequenceTests
 {
     [TestFixture]
     public class SequenceOfStepsExecutionTests
     {
-        private readonly IWorkflowFactory _factory = new WorkflowFactory();
+        private readonly ISequenceFactory _factory = new SequenceFactory();
 
         [Test]
         public async Task Should_execute_steps_in_the_same_order_as_they_were_added()
         {
             var count = 1;
-            var workflow = _factory.CreateWorkflow(builder =>
+            var workflow = _factory.CreateSequence(builder =>
             {
                 builder
                     .AddStep(async (context, next) =>
@@ -43,7 +43,7 @@ namespace WorkflowTests
         [Test]
         public async Task Should_pass_when_there_are_no_steps()
         {
-            var workflow = _factory.CreateWorkflow(builder =>
+            var workflow = _factory.CreateSequence(builder =>
             {
             });
 
@@ -55,36 +55,36 @@ namespace WorkflowTests
         [Test]
         public async Task Should_throw_null_argument_exception_when_no_action_provided_for_building_steps()
         {
-            Assert.Throws<ArgumentNullException>(() => _factory.CreateWorkflow(null));
+            Assert.Throws<ArgumentNullException>(() => _factory.CreateSequence(null));
         }
     }
 
-    public class SimpleWorkflowStepNotRun : WorkflowStep
+    public class SimpleStepNotRun : Step
     {
-        public override async Task RunAsync(IWorkflowContext context)
+        public override async Task RunAsync(ISequenceContext context)
         {
             await Next(context);
         }
     }
 
-    public class SimpleWorkflowStepNoParameters : WorkflowStep
+    public class SimpleStepNoParameters : Step
     {
-        public override async Task RunAsync(IWorkflowContext context)
+        public override async Task RunAsync(ISequenceContext context)
         {
             await Next(context);
         }
     }
 
-    public class SimpleWorkflowStepWithParameters : WorkflowStep
+    public class SimpleStepWithParameters : Step
     {
         private readonly string _something;
 
-        public SimpleWorkflowStepWithParameters(string something)
+        public SimpleStepWithParameters(string something)
         {
             _something = something;
         }
 
-        public override async Task RunAsync(IWorkflowContext context)
+        public override async Task RunAsync(ISequenceContext context)
         {
             await Next(context);
         }

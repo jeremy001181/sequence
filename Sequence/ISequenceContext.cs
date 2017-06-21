@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Workflow
+namespace Sequence
 {
-    public interface IWorkflowContext
+    public interface ISequenceContext
     {
         IDictionary<string, object> Data { get; set; }
     }

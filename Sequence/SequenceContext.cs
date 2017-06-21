@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Workflow
+namespace Sequence
 {
-    public class WorkflowContext : IWorkflowContext
+    public class SequenceContext : ISequenceContext
     {
-        public WorkflowContext()
+        public SequenceContext()
         {
             //todo:concurrentdict?
             Data = new ConcurrentDictionary<string, object>();

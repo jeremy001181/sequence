@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Workflow;
+using Sequence;
 
-namespace WorkflowTests
+namespace SequenceTests
 {
     [TestFixture]
-    class WorkflowContextAccessbilityTests
+    class SequenceContextAccessbilityTests
     {
-        private readonly IWorkflowFactory _factory = new WorkflowFactory();
+        private readonly ISequenceFactory _factory = new SequenceFactory();
 
         [Test]
         public async Task Should_be_able_to_read_object_that_set_in_previous_step_from_context()
         {
-            var workflow = _factory.CreateWorkflow(builder =>
+            var workflow = _factory.CreateSequence(builder =>
             {
                 builder.AddStep<TestStepToAddObject>();
                 builder.AddStep<TestStepB>();
@@ -30,9 +30,9 @@ namespace WorkflowTests
         }
     }
 
-    public class TestStepToAddObject : WorkflowStep
+    public class TestStepToAddObject : Step
     {
-        public override async Task RunAsync(IWorkflowContext context)
+        public override async Task RunAsync(ISequenceContext context)
         {
             context.Data.Add("testdata1", "testdata1");
 
@@ -40,9 +40,9 @@ namespace WorkflowTests
         }
     }
 
-    internal class TestStepB : WorkflowStep
+    internal class TestStepB : Step
     {
-        public override async Task RunAsync(IWorkflowContext context)
+        public override async Task RunAsync(ISequenceContext context)
         {
             Assert.AreEqual(context.Data["testdata1"], "testdata1");
 

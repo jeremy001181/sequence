@@ -1,13 +1,13 @@
-﻿namespace Workflow
+﻿namespace Sequence
 {
     using System.Threading.Tasks;
 
-    internal class Workflow : IWorkflow
+    internal class Sequence : ISequence
     {
-        private readonly IWorkflowStepReader _stepReader;
-        private readonly IWorkflowContext _context;
+        private readonly ISequenceReader _stepReader;
+        private readonly ISequenceContext _context;
 
-        internal Workflow(IWorkflowStepReader stepReader, IWorkflowContext context)
+        internal Sequence(ISequenceReader stepReader, ISequenceContext context)
         {
             _stepReader = stepReader;
             _context = context;

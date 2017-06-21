@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 
-namespace Workflow
+namespace Sequence
 {
-    public interface IWorkflow
+    public interface ISequence
     {
         Task ExecuteAsync();
     }
