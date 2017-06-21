@@ -42,11 +42,11 @@ namespace Sequence.AcceptanceTests
         [Test]
         public async Task Should_pass_when_there_are_no_steps()
         {
-            var workflow = _factory.CreateSequence(builder =>
+            var sequence = _factory.CreateSequence(builder =>
             {
             });
 
-            await workflow.ExecuteAsync();
+            await sequence.ExecuteAsync();
 
             Assert.Pass();
         }

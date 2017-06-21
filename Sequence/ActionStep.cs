@@ -14,9 +14,9 @@ namespace Sequence
 
         public override async Task RunAsync(ISequenceContext context)
         {
-            _action(context, async workflowContext =>
+            _action(context, async sequenceContext =>
             {
-                await Next(workflowContext);
+                await Next(sequenceContext);
             });
 
             await Task.FromResult(0);

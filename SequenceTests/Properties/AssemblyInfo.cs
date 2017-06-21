@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ASOS.com")]
-[assembly: AssemblyProduct("WorkflowTests")]
+[assembly: AssemblyProduct("Sequence.AcceptanceTests")]
 [assembly: AssemblyCopyright("Copyright © ASOS.com 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
