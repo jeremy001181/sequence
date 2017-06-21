@@ -19,7 +19,7 @@ namespace Sequence
         public IStepCollectionBuilder AddStep<T>(params object[] args) where T : Step, new()
         {
             var newStep = args == null || args.Length == 0
-                ? Activator.CreateInstance<T>() 
+                ? new T()
                 : Activator.CreateInstance(typeof(T), BindingFlags.CreateInstance, args);
             
             _steps.AppendStep(newStep as Step);
