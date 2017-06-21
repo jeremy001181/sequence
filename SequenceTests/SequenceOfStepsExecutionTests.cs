@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Sequence;
 
-namespace SequenceTests
+namespace Sequence.AcceptanceTests
 {
     [TestFixture]
     public class SequenceOfStepsExecutionTests

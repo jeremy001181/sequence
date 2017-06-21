@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequence", "Sequence\Sequence.csproj", "{997859C0-F5E3-4090-9189-A3A8B2C555B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceTests", "SequenceTests\SequenceTests.csproj", "{CC476B72-7FDF-4570-8DDC-27B9C77B1D99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequence.AcceptanceTests", "SequenceTests\Sequence.AcceptanceTests.csproj", "{CC476B72-7FDF-4570-8DDC-27B9C77B1D99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
