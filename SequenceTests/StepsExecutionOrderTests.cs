@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Sequence.AcceptanceTests
 {
     [TestFixture]
-    public class SequenceOfStepsExecutionTests
+    public class StepsExecutionOrderTests
     {
         private readonly ISequenceFactory _factory = new SequenceFactory();
 

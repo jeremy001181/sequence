@@ -27,9 +27,9 @@ namespace Sequence
             return this;
         }
         
-        public IStepCollectionBuilder AddStep(Action<ISequenceContext, Func<ISequenceContext, Task>> action)
+        public IStepCollectionBuilder AddStep(Func<ISequenceContext, Func<ISequenceContext, Task>, Task> asyncStep)
         {
-            var newStep = new ActionStep(action);
+            var newStep = new AsyncStep(asyncStep);
             
             _steps.AppendStep(newStep);
 

@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionStep.cs" />
+    <Compile Include="AsyncStep.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="ISequenceContext.cs" />
     <Compile Include="ISequenceFactory.cs" />

@@ -6,6 +6,6 @@ namespace Sequence
     public interface IStepCollectionBuilder
     {
         IStepCollectionBuilder AddStep<T>(params object [] args) where T : Step, new();
-        IStepCollectionBuilder AddStep(Action<ISequenceContext, Func<ISequenceContext, Task>> action);
+        IStepCollectionBuilder AddStep(Func<ISequenceContext, Func<ISequenceContext, Task>, Task> asyncStep);
     }
 }
