@@ -13,7 +13,8 @@ namespace Sequence.AcceptanceTests
         {
             var sequence = _factory.CreateSequence(builder =>
             {
-                builder.AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1")
+                builder
+                    .AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1")
                     .AddStep(async (context, next) =>
                     {
                         Assert.AreEqual(context.Data["1"], "step 1");
@@ -31,6 +32,19 @@ namespace Sequence.AcceptanceTests
             });
 
             await sequence.ExecuteAsync();
+        }
+
+        [Test]
+        public async Task Should_be_able_to_read_object_once_sequence_completed_execution()
+        {
+            var sequence = _factory.CreateSequence(builder =>
+            {
+                builder.AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1");
+            });
+
+            await sequence.ExecuteAsync();
+
+            Assert.AreEqual(sequence.Context.Data["1"], "step 1");
         }
     }
 

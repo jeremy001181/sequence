@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequence", "Sequence\Sequen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequence.AcceptanceTests", "SequenceTests\Sequence.AcceptanceTests.csproj", "{CC476B72-7FDF-4570-8DDC-27B9C77B1D99}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B381829-5A81-4FDA-B624-ED5C17CCD061}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AAB497A6-C0F9-4423-AFDE-1D800A4AAB9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{997859C0-F5E3-4090-9189-A3A8B2C555B4} = {6B381829-5A81-4FDA-B624-ED5C17CCD061}
+		{CC476B72-7FDF-4570-8DDC-27B9C77B1D99} = {AAB497A6-C0F9-4423-AFDE-1D800A4AAB9D}
 	EndGlobalSection
 EndGlobal

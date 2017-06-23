@@ -13,6 +13,11 @@
             _context = context;
         }
 
+        public ISequenceContext Context
+        {
+            get { return _context; }
+        }
+
         public virtual async Task ExecuteAsync()
         {
             var firstStep = _stepReader.GetFirstStep();
