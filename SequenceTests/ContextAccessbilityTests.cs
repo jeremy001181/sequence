@@ -54,10 +54,7 @@ namespace Sequence.AcceptanceTests
             var sequence = _factory.CreateSequence(builder =>
             {
                 builder.AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1")
-                       .AddStep((context, next) =>
-                    {
-                        throw new NotImplementedException();
-                    });
+                       .AddStep<TestSteps.ThrowUnhandleExceptionStep>();
             });
 
             try
