@@ -4,23 +4,18 @@ namespace Sequence
 {
     public class SequenceFactory : ISequenceFactory
     {
-        public ISequence CreateSequence(Action<IStepCollectionBuilder> action)
+        public ISequence CreateSequence(Action<IStepCollectionBuilder> configureSteps)
         {
-            if (action == null)
+            if (configureSteps == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException("configureSteps");
             }
 
             var stepCollection = new StepManager();
 
-            action(stepCollection);
+            configureSteps(stepCollection);
 
             return new Sequence(stepCollection, new SequenceContext());
         }
-    }
-
-    public interface ISequenceReader
-    {
-        Step GetFirstStep();
     }
 }

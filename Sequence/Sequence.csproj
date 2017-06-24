@@ -47,6 +47,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="ISequenceContext.cs" />
     <Compile Include="ISequenceFactory.cs" />
+    <Compile Include="ISequenceReader.cs" />
     <Compile Include="SequenceContext.cs" />
     <Compile Include="StepManager.cs" />
     <Compile Include="ISequence.cs" />
