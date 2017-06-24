@@ -56,5 +56,34 @@ namespace Sequence.AcceptanceTests
         {
             Assert.Throws<ArgumentNullException>(() => _factory.CreateSequence(null));
         }
+
+        [Test]
+        public async Task Should_not_execute_any_following_steps_when_previous_step_doesnot_invoke_next()
+        {
+            var count = 0;
+            var sequence = _factory.CreateSequence(builder =>
+            {
+                builder
+                    .AddStep(async (context, next) =>
+                    {
+                        count++;
+                        await next(context);
+                    })
+                    .AddStep(async (context, next) =>
+                    {
+                        // A step not does anything
+                        await Task.FromResult(0);
+                    })
+                    .AddStep(async (context, next) =>
+                    {
+                        count++;
+                        await next(context);
+                    });
+            });
+
+            await sequence.ExecuteAsync();
+
+            Assert.AreEqual(1, count);
+        }
     }
 }
