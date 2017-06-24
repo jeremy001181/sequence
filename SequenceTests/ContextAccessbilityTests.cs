@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace Sequence.AcceptanceTests
@@ -46,6 +47,28 @@ namespace Sequence.AcceptanceTests
 
             Assert.AreEqual(sequence.Context.Data["1"], "step 1");
         }
-    }
 
+        [Test]
+        public async Task Should_be_able_to_read_data_from_context_after_exception_occurred()
+        {
+            var sequence = _factory.CreateSequence(builder =>
+            {
+                builder.AddStep<TestSteps.AddArgumentsToContextStep>("1", "step 1")
+                       .AddStep((context, next) =>
+                    {
+                        throw new NotImplementedException();
+                    });
+            });
+
+            try
+            {
+                await sequence.ExecuteAsync();
+            }
+            catch
+            {
+                Assert.AreEqual(sequence.Context.Data["1"], "step 1");
+            }
+           
+        }
+    }
 }
