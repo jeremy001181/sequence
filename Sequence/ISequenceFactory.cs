@@ -2,6 +2,9 @@ using System;
 
 namespace Sequence
 {
+    /// <summary>
+    /// Sequence factory for create sequence
+    /// </summary>
     public interface ISequenceFactory
     {
         /// <summary>

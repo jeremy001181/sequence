@@ -13,11 +13,13 @@
             _context = context;
         }
 
+        /// <inheritdoc />
         public ISequenceContext Context
         {
             get { return _context; }
         }
 
+        /// <inheritdoc />
         public virtual async Task ExecuteAsync()
         {
             var firstStep = _stepReader.GetFirstStep();

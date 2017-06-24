@@ -1,6 +1,6 @@
 namespace Sequence
 {
-    public interface ISequenceReader
+    internal interface ISequenceReader
     {
         Step GetFirstStep();
     }

@@ -2,8 +2,12 @@ using System;
 
 namespace Sequence
 {
+    /// <summary>
+    /// Sequence factory for create sequence
+    /// </summary>
     public class SequenceFactory : ISequenceFactory
     {
+        /// <inheritdoc />
         public ISequence CreateSequence(Action<IStepCollectionBuilder> configureSteps)
         {
             if (configureSteps == null)

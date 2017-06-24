@@ -1,16 +1,15 @@
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Sequence
 {
-    public class SequenceContext : ISequenceContext
+    internal class SequenceContext : ISequenceContext
     {
-        public SequenceContext()
+        internal SequenceContext()
         {
-            //todo:concurrentdict?
-            Data = new ConcurrentDictionary<string, object>();
+            Data = new Dictionary<string, object>();
         }
 
+        /// <inheritdoc />
         public IDictionary<string, object> Data { get; set; }
     }
 }
